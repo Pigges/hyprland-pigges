@@ -33,7 +33,7 @@
         "sort-by-number": true,
         "on-scroll-up": "hyprctl dispatch workspace e+1",
         "on-scroll-down": "hyprctl dispatch workspace e-1",
-        "format-icons": {
+        "format-icons": { // https://www.nerdfonts.com/cheat-sheet
             "1": "", // Browse
             "2": "󰅩", // Code
             "3": "󰵅", // Social
@@ -59,7 +59,7 @@
         }
     },
     "custom/updates": {
-        "exec": "(pacman -Qu ; yay -Qua) | wc -l",
+        "exec": "(pacman -Sy && pacman -Qyu ; paru -Qua) | wc -l",
         "interval": 7200,
         "format": "{} 󰇚"
     },
@@ -71,7 +71,7 @@
         "return-type" : "json"
     },
     "tray": {
-        "icon-size": 13,
+        "icon-size": 14,
         "spacing": 10
     },
     "clock": {

@@ -49,7 +49,7 @@
     foreground = "#CDD6F4"
 
 [urgency_normal]
-    background = "#0003"
+    background = "#000E"
     foreground = "#CDD6F4"
 
 [urgency_critical]
