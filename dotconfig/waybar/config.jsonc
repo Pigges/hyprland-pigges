@@ -18,6 +18,7 @@
         "clock"
     ],
     "modules-right": [
+        "network",
         "pulseaudio",
         "pulseaudio#microphone",
         "battery",
@@ -68,6 +69,18 @@
         "height": 18,
         "width": 18,
         "icon": true
+    },
+    "network": {
+        "interface": "wlan0",
+        "format": "{ifname}",
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-disconnected": "", //An empty format will hide the module.
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "tooltip-format-wifi": "WIFI: {essid} ({signalStrength}%) \nAddress: {ipaddr}\nGateway: {gwaddr}",
+        "tooltip-format-ethernet": "Address: {ipaddr}\n",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50
     },
     "custom/search": {
         "tooltip": false,
