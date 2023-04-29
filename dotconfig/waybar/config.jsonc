@@ -4,20 +4,24 @@
     "mod": "dock",
     "exclusive": true,
     "passthrough": false,
+    "margin": "0",
     "gtk-layer-shell": true,
     "height": 0,
+    "fixed-center": true,
     "modules-left": [
+        "user",
         "wlr/workspaces",
-        "custom/weather",
-        "custom/updates"
+        "custom/weather"
     ],
-    "modules-center": ["hyprland/window"],
+    "modules-center": [
+        "custom/media",
+        "clock"
+    ],
     "modules-right": [
         "pulseaudio",
         "pulseaudio#microphone",
         "battery",
         "backlight",
-        "clock",
         "tray"
     ],
 
@@ -57,6 +61,26 @@
             "9": [],
             "10": []
         }
+    },
+    "user": {
+        "format": "",
+        "interval": 60,
+        "height": 18,
+        "width": 18,
+        "icon": true
+    },
+    "custom/search": {
+        "tooltip": false,
+        "format": "\uf303 Search",
+        "on-click": "rofi -show drun -theme ~/.config/rofi/global/rofi.rasi &"
+    },
+    "custom/media": {
+        "tooltip": true,
+        "format": "{}",
+        "interval": 5,
+        "exec": "~/.config/waybar/scripts/waybar-media.py",
+        "on-click": "playerctl play-pause",
+        "return-type": "json"
     },
     "custom/updates": {
         "exec": "(pacman -Sy && pacman -Qyu ; paru -Qua) | wc -l",
