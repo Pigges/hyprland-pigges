@@ -17,9 +17,9 @@ makepkg -si
 ### Packages
 ```bash
 paru -S hyprland-bin polkit-gnome ffmpeg                    \
-rofi-lbonn-wayland-git pavucontrol thunar starship wl-clipboard wf-recorder   \
+rofi-lbonn-wayland-git pavucontrol nemo thunderbird starship wl-clipboard wf-recorder   \
 swaybg grimblast-git ffmpegthumbnailer tumbler playerctl    \
-noise-suppression-for-voice thunar-archive-plugin alacritty \
+noise-suppression-for-voice alacritty \
 waybar-hyprland wlogout swaylock-effects sddm-git pamixer   \
 nwg-look-bin nordic-theme papirus-icon-theme dunst          \
 noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nerd-fonts-git
