@@ -16,7 +16,7 @@ makepkg -si
 
 ### Packages
 ```bash
-paru -S hyprland-bin polkit-gnome ffmpeg                    \
+paru -S hyprland-git polkit-gnome ffmpeg                    \
 rofi-lbonn-wayland-git pavucontrol nemo thunderbird starship wl-clipboard wf-recorder   \
 swaybg grimblast-git ffmpegthumbnailer tumbler playerctl    \
 noise-suppression-for-voice alacritty \
