@@ -32,7 +32,7 @@
     },
     "wlr/workspaces": {
         "disable-scroll": true,
-        "all-outputs": true,
+        "all-outputs": false,
         "on-click": "activate",
         "format": "{icon}",
         "sort-by-number": true,
@@ -48,19 +48,17 @@
             "7": "󰂓", // Lab
             "8": "󰛄", //Any
             "9": "󰛄", //Any
-            "10": "󰛄" //Any
-        },
-        "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": [],
-            "6": [],
-            "7": [],
-            "8": [],
-            "9": [],
-            "10": []
+            "10": "󰛄", //Any
+            "11": "", // Browse
+            "12": "󰅩", // Code
+            "13": "󰵅", // Social
+            "14": "󰊗", // Game
+            "15": "󰝚", // Music
+            "16": "󰉋", // Explore
+            "17": "󰂓", // Lab
+            "18": "󰛄", //Any
+            "19": "󰛄", //Any
+            "20": "󰛄" //Any
         }
     },
     "user": {
