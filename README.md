@@ -25,6 +25,11 @@ nwg-look-bin nordic-theme papirus-icon-theme dunst          \
 noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nerd-fonts-git
 ```
 
+### Install hyprload
+```bash
+curl -sSL https://raw.githubusercontent.com/Duckonaut/hyprload/main/install.sh | bash
+```
+
 ### Dotfiles
 ```bash
 git clone https://github.com/Pigges/hyprland-pigges.git
