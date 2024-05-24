@@ -1,0 +1,175 @@
+{
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "margin": "8",
+    "gtk-layer-shell": true,
+    "height": 0,
+    "fixed-center": true,
+    "reload_style_on_change": true,
+    "modules-left": [
+        "user",
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "custom/media",
+        "clock"
+        // "hyprland/window"
+    ],
+    "modules-right": [
+        "custom/weather",
+        // "custom/calendar",
+        "network",
+        "pulseaudio",
+        "pulseaudio#microphone",
+        "battery",
+        "backlight",
+        "tray"
+    ],
+
+    "hyprland/window": {
+        "format": "{}",
+        "separate-outputs": true
+    }, 
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "on-click": "activate",
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "0",
+            "11": "1",
+            "12": "2",
+            "13": "3",
+            "14": "4",
+            "15": "5",
+            "16": "6",
+            "17": "7",
+            "18": "8",
+            "19": "9",
+            "20": "0"
+        },
+        "sort-by-number": true,
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "AMERICA, HELL YEAH!",
+        "format-tr": "As bayrakları",
+        "keyboard-name": "at-translated-set-2-keyboard"
+    },
+    "user": {
+        "format": "",
+        "interval": 60,
+        "height": 16,
+        "width": 16,
+        "icon": true
+    },
+    "network": {
+        "interface": "wlan0",
+        "format": "{ifname}",
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-disconnected": "", //An empty format will hide the module.
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "tooltip-format-wifi": "WIFI: {essid} ({signalStrength}%) \nAddress: {ipaddr}\nGateway: {gwaddr}",
+        "tooltip-format-ethernet": "Address: {ipaddr}\n",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50
+    },
+    "custom/search": {
+        "tooltip": false,
+        "format": "\uf303 Search",
+        "on-click": "rofi -show drun -theme ~/.config/rofi/global/rofi.rasi &"
+    },
+    "custom/media": {
+        "tooltip": true,
+        "format": "{}",
+        "interval": 5,
+        "exec": "~/.config/waybar/scripts/waybar-media.py",
+        "on-click": "playerctl play-pause",
+        "return-type": "json"
+    },
+    "custom/updates": {
+        "exec": "(pacman -Sy && pacman -Qyu ; paru -Qua) | wc -l",
+        "interval": 7200,
+        "format": "{} 󰇚"
+    },
+   "custom/weather" : {
+        "tooltip" : true,
+        "format" : "{}",
+        "interval" : 30,
+        "exec" : "~/.config/waybar/scripts/waybar-wttr.py",
+        "return-type" : "json"
+    },
+    "custom/calendar" : {
+        "tooltip" : true,
+        "format" : "{}",
+        "interval" : 60,
+        "exec" : "~/.config/waybar/scripts/waybar-hamster-calendar --calendar ~/hamster/Calendar.txt --waybar",
+        "return-type" : "json"
+    },
+    "tray": {
+        "icon-size": 14,
+        "spacing": 10
+    },
+    "clock": {
+        "format-alt": "{:%R}",
+        "format": "{:%I:%M %p}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", ""],
+        "on-scroll-up": "brightnessctl set 1%+",
+        "on-scroll-down": "brightnessctl set 1%-",
+        "min-length": 6
+    },
+    "battery": {
+        "bat": "BAT0",
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", "", "", ""]
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "tooltip": false,
+        "format-muted": "Muted 󰖁",
+        "on-click": "pamixer -t",
+        "on-scroll-up": "pamixer -i 5",
+        "on-scroll-down": "pamixer -d 5",
+        "scroll-step": 5,
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        }
+    },
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": "{volume}% 󰍬",
+        "format-source-muted": "Muted 󰍭",
+        "on-click": "pamixer --default-source -t",
+        "on-scroll-up": "pamixer --default-source -i 5",
+        "on-scroll-down": "pamixer --default-source -d 5",
+        "scroll-step": 5
+    }
+}
