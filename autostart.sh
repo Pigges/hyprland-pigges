@@ -2,10 +2,9 @@
 
 source ~/.config/hypr/lib.sh
 
-
 # Configuration stuff
 wl-clipboard-history -t &
-~/.config/hypr/xdg-portal-hyprland &
+~/.config/hypr/scripts/xdg-portal-hyprland &
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
 systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
@@ -31,4 +30,5 @@ blueman-applet &
 
 brightnessctl --restore &
 
-~/.config/hypr/scripts/configure-split-monitor-workspaces
+~/.config/hypr/scripts/update-plugins.sh &
+~/.config/hypr/scripts/hypridle.sh &

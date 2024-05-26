@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-
+alias update-rice='~/.config/hypr/manage/update.sh'
 
 set_wallpaper () {
 	swww img "$1" -t grow --transition-pos top

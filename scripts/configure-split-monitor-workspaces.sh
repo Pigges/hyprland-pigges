@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+if ls ~/.config/hypr/disabled/SPLIT_MONITOR_WORKSPACES; then
+    exit 1
+fi
+
+sleep 1
+
 # Use the split-monitor-workspaces dispatcher if the plugin is active
 if hyprctl plugin list | grep -q 'split-monitor-workspaces'; then
     for i in $(seq 1 9);
