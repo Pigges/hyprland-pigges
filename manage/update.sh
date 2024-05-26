@@ -3,7 +3,7 @@
 notify_flag=$1
 
 notify_core () {
-        notify-send --notify "Rice Update Manager"  "$1" $2
+        notify-send "Rice Update Manager"  "$1" $2
 }
 
 notify () {
