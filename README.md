@@ -1,7 +1,7 @@
 # Hyprland - Pigges
 
 Dotfiles for my Hyprland config
-![Screenshot](hyprland-pigges.png)
+![Screenshot](hyprland.png)
 
 ## Install
 
