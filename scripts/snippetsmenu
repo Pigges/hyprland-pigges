@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+wl-copy $(grep -v '^#' ~/.local/share/snippets | bemenu -i -l 50 | cut -d' ' -f1)
