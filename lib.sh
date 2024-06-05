@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 alias update-rice='~/.config/hypr/manage/update.sh'
+alias random-wallpaper='set_wallpaper $(find ~/Pictures/Wallpapers/ -type f | shuf -n 1)'
 
 set_wallpaper () {
 	swww img "$1" -t grow --transition-pos top
