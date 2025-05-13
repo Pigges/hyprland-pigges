@@ -1,4 +1,4 @@
-@define-color accent rgb(99, 75, 126);
+@define-color accent #0088FF;
 
 * {
     border: none;
@@ -11,10 +11,12 @@
 
 window#waybar {
     color: #fff;
-    background-color: rgba(0, 0, 0, 0.50);
+    background-color: rgba(0, 0, 0, 0.7);
+    /* background: shade(alpha(rgb(0, 0, 0), 0.8), 1.25); */
     /*background-color: rgba(193, 158, 141, 0.1);*/
     /*background-color: rgba(0, 0, 0, 0.75);*/
     border-radius: 8px;
+    border: 2px solid @accent;
 }
 
 tooltip {
@@ -29,10 +31,11 @@ tooltip {
     all: unset;
 	/* background: rgba(51, 51, 51, 0.5); */
     border-radius: 16px;
-    border: solid 0px #f4d9e1;
+    /* border: 1px solid @accent; */
     padding: 2px 10px;
-    border-radius: 8px;
-    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    /* border: ; */
+    /* background-color: rgba(20, 39, 82, 0.7); */
 }
 
 #workspaces button {
@@ -43,17 +46,33 @@ tooltip {
     font-weight: bold;
     margin: 0 2px;
     padding: 2px;
-    border-radius: 4px;
+    border-radius: 12px;
     color: #eee;
+    /* transition: 0.5s; */
     /* background-color: #eee; */
     /* border: 2px solid rgba(0, 0, 0, 0); */
     /* color: @accent; */
 }
 
+#workspaces button.empty {
+    color: #a6e3a1;
+}
+
+#workspaces button.visible {
+    /* color: @accent; */
+
+    outline: 1px solid @accent;
+}
+
 #workspaces button.active {
     /* border: 2px solid #eee; */
+    color: #eee;
     background-color: @accent;
     /* color: #111; */
+}
+
+#workspaces button.urgent {
+    color: red;
 }
 
 #workspaces button:hover {
@@ -66,7 +85,8 @@ tooltip {
     border-radius: 8px;
     margin: 0 10px;
     padding: 0 16px;
-    background-color: rgba(197, 147, 245, 0.25);
+    border: 1px solid @accent;
+    background-color: rgba(20, 39, 82, 0.4);
 }
 
 #custom-language,
@@ -165,3 +185,4 @@ tooltip {
     border-right: 0px;
     margin-left: 0px;
 }
+

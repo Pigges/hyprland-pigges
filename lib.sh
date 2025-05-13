@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 alias update-rice='~/.config/hypr/manage/update.sh'
 alias random-wallpaper='set_wallpaper $(find ~/Pictures/Wallpapers/ -type f | shuf -n 1)'

@@ -3,7 +3,7 @@
 source ~/.config/hypr/lib.sh
 
 # Configuration stuff
-wl-clipboard-history -t &
+#wl-clipboard-history -t &
 ~/.config/hypr/scripts/xdg-portal-hyprland &
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
 systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
@@ -16,7 +16,6 @@ wl-paste -p --watch wl-copy -pc &
 
 # Wallpaper
 swww-daemon &
-#swaybg -m fill -i ~/Pictures/Wallpapers/hyprfog-2.png &
 set_wallpaper $(find ~/Pictures/Wallpapers/ -type f | shuf -n 1)
 
 # Reload Hyprland plugins

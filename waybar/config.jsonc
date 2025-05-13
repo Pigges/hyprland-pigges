@@ -4,7 +4,7 @@
     "mod": "dock",
     "exclusive": true,
     "passthrough": false,
-    "margin": "8",
+    "margin": "9",
     "gtk-layer-shell": true,
     "height": 0,
     "fixed-center": true,
@@ -15,8 +15,7 @@
     ],
     "modules-center": [
         "custom/media",
-        "clock"
-        // "hyprland/window"
+        "hyprland/window"
     ],
     "modules-right": [
         "custom/weather",
@@ -26,16 +25,22 @@
         "pulseaudio#microphone",
         "battery",
         "backlight",
-        "tray"
+        "tray",
+        "clock"
+        // "custom/notification"
     ],
 
     "hyprland/window": {
-        "format": "{}",
-        "separate-outputs": true
+        "format": "<span  weight='bold' >{}</span>",
+        "separate-outputs": true,
+        "max-length": 120,
+        "icon": true,
+        "icon-size": 13
     }, 
     "hyprland/workspaces": {
         "disable-scroll": true,
-        "all-outputs": false,
+        "active-only": false,
+        // "all-outputs": false,
         "on-click": "activate",
         "format": "{icon}",
         "format-icons": {
@@ -63,6 +68,25 @@
         "sort-by-number": true,
         "on-scroll-up": "hyprctl dispatch workspace e+1",
         "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 14,
+        "icon-theme": "Numix-Circle",
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "all-outputs": false,
+        "ignore-list": [
+        "Alacritty"
+        ],
+        "app_ids-mapping": {
+        "firefoxdeveloperedition": "firefox-developer-edition"
+        },
+        "rewrite": {
+            "Firefox Web Browser": "Firefox",
+            "Foot Server": "Terminal"
+        }
     },
     "hyprland/language": {
         "format": "{}",
@@ -128,7 +152,21 @@
     "clock": {
         "format-alt": "{:%R}",
         "format": "{:%I:%M %p}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode"          : "year",
+            "mode-mon-col"  : 3,
+            "weeks-pos"     : "right",
+            "on-scroll"     : 1,
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        }
     },
     "backlight": {
         "device": "intel_backlight",
@@ -171,5 +209,25 @@
         "on-scroll-up": "pamixer --default-source -i 5",
         "on-scroll-down": "pamixer --default-source -d 5",
         "scroll-step": 5
-    }
+    },
+    "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "󰅸",
+      "none": "󰂜",
+      "dnd-notification": "󰅸",
+      "dnd-none": "󱏨",
+      "inhibited-notification": "󰅸",
+      "inhibited-none": "󰂜",
+      "dnd-inhibited-notification": "󰅸",
+      "dnd-inhibited-none": "󱏨"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click-right": "swaync-client -d -sw",
+    "on-click": "swaync-client -t -sw",
+    "escape": true
+  }
 }
