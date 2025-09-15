@@ -1,4 +1,6 @@
 @define-color accent #0088FF;
+@define-color secondary-background #1F1F1F;
+@define-color background #0C0C0C;
 
 * {
     border: none;
@@ -11,12 +13,14 @@
 
 window#waybar {
     color: #fff;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: @background;
+    background-color: transparent;
+    font-weight: bold;
     /* background: shade(alpha(rgb(0, 0, 0), 0.8), 1.25); */
     /*background-color: rgba(193, 158, 141, 0.1);*/
     /*background-color: rgba(0, 0, 0, 0.75);*/
-    border-radius: 8px;
-    border: 2px solid @accent;
+    /*border-radius: 8px;*/
+    /*border: 2px solid @accent;*/
 }
 
 tooltip {
@@ -31,10 +35,11 @@ tooltip {
     all: unset;
 	/* background: rgba(51, 51, 51, 0.5); */
     border-radius: 16px;
-    /* border: 1px solid @accent; */
+     border: 1px solid @accent;
     padding: 2px 10px;
     border-radius: 12px;
     /* border: ; */
+    background-color: @secondary-background;
     /* background-color: rgba(20, 39, 82, 0.7); */
 }
 
@@ -66,7 +71,7 @@ tooltip {
 
 #workspaces button.active {
     /* border: 2px solid #eee; */
-    color: #eee;
+    color: @secondary-background;
     background-color: @accent;
     /* color: #111; */
 }

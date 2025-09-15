@@ -1,21 +1,18 @@
 {
     "layer": "top",
     "position": "top",
-    "mod": "dock",
+    "mode": "dock",
     "exclusive": true,
     "passthrough": false,
-    "margin": "9",
+    "margin": "0",
     "gtk-layer-shell": true,
-    "height": 0,
     "fixed-center": true,
     "reload_style_on_change": true,
     "modules-left": [
-        "user",
         "hyprland/workspaces"
     ],
     "modules-center": [
-        "custom/media",
-        "hyprland/window"
+        "clock"
     ],
     "modules-right": [
         "custom/weather",
@@ -25,8 +22,7 @@
         "pulseaudio#microphone",
         "battery",
         "backlight",
-        "tray",
-        "clock"
+        "tray"
         // "custom/notification"
     ],
 
@@ -94,21 +90,14 @@
         "format-tr": "As bayrakları",
         "keyboard-name": "at-translated-set-2-keyboard"
     },
-    "user": {
-        "format": "",
-        "interval": 60,
-        "height": 16,
-        "width": 16,
-        "icon": true
-    },
     "network": {
-        "interface": "wlan0",
+        //"interface": "wlp0s20f3",
         "format": "{ifname}",
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-wifi": "{icon}",
         "format-disconnected": "", //An empty format will hide the module.
+	"format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
         "tooltip-format": "{ifname} via {gwaddr} ",
-        "tooltip-format-wifi": "WIFI: {essid} ({signalStrength}%) \nAddress: {ipaddr}\nGateway: {gwaddr}",
+        "tooltip-format-wifi": "WIFI: {essid} ({signalStrength}%)\nup: {bandwidthUpBits}, down: {bandwidthDownBits}\nAddress: {ipaddr}\nGateway: {gwaddr}",
         "tooltip-format-ethernet": "Address: {ipaddr}\n",
         "tooltip-format-disconnected": "Disconnected",
         "max-length": 50
@@ -171,7 +160,7 @@
     "backlight": {
         "device": "intel_backlight",
         "format": "{icon} {percent}%",
-        "format-icons": ["", "", ""],
+        "format-icons": ["󰃜", "󰃛", "󰃚"],
         "on-scroll-up": "brightnessctl set 1%+",
         "on-scroll-down": "brightnessctl set 1%-",
         "min-length": 6
@@ -187,7 +176,7 @@
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", "", "", ""]
+        "format-icons": ["", "", "", "", ""]
     },
     "pulseaudio": {
         "format": "{volume}% {icon}",

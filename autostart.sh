@@ -7,7 +7,8 @@ source ~/.config/hypr/lib.sh
 ~/.config/hypr/scripts/xdg-portal-hyprland &
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
 systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+systemctl --user start hyprpolkitagent &
 wlsunset -S 9:00 -s 19:30 &
 wl-paste -p --watch wl-copy -pc &
 
