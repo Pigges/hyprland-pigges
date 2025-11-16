@@ -15,15 +15,12 @@
         "clock"
     ],
     "modules-right": [
-        "custom/weather",
-        // "custom/calendar",
+        "group/tray-expander",
+		"bluetooth",
         "network",
         "pulseaudio",
-        "pulseaudio#microphone",
+		"cpu",
         "battery",
-        "backlight",
-        "tray"
-        // "custom/notification"
     ],
 
     "hyprland/window": {
@@ -34,12 +31,11 @@
         "icon-size": 13
     }, 
     "hyprland/workspaces": {
-        "disable-scroll": true,
-        "active-only": false,
-        // "all-outputs": false,
         "on-click": "activate",
+        "active-only": false,
         "format": "{icon}",
         "format-icons": {
+            "default": "",
             "1": "1",
             "2": "2",
             "3": "3",
@@ -59,7 +55,8 @@
             "17": "7",
             "18": "8",
             "19": "9",
-            "20": "0"
+            "20": "0",
+            "active": "󱓻"
         },
         "sort-by-number": true,
         "on-scroll-up": "hyprctl dispatch workspace e+1",
@@ -84,63 +81,43 @@
             "Foot Server": "Terminal"
         }
     },
-    "hyprland/language": {
-        "format": "{}",
-        "format-en": "AMERICA, HELL YEAH!",
-        "format-tr": "As bayrakları",
-        "keyboard-name": "at-translated-set-2-keyboard"
-    },
-    "network": {
-        //"interface": "wlp0s20f3",
-        "format": "{ifname}",
-        "format-wifi": "{icon}",
-        "format-disconnected": "", //An empty format will hide the module.
-	"format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "tooltip-format-wifi": "WIFI: {essid} ({signalStrength}%)\nup: {bandwidthUpBits}, down: {bandwidthDownBits}\nAddress: {ipaddr}\nGateway: {gwaddr}",
-        "tooltip-format-ethernet": "Address: {ipaddr}\n",
-        "tooltip-format-disconnected": "Disconnected",
-        "max-length": 50
-    },
-    "custom/search": {
-        "tooltip": false,
-        "format": "\uf303 Search",
-        "on-click": "rofi -show drun -theme ~/.config/rofi/global/rofi.rasi &"
-    },
-    "custom/media": {
-        "tooltip": true,
-        "format": "{}",
-        "interval": 5,
-        "exec": "~/.config/waybar/scripts/waybar-media.py",
-        "on-click": "playerctl play-pause",
-        "return-type": "json"
-    },
-    "custom/updates": {
-        "exec": "(pacman -Sy && pacman -Qyu ; paru -Qua) | wc -l",
-        "interval": 7200,
-        "format": "{} 󰇚"
-    },
-   "custom/weather" : {
-        "tooltip" : true,
-        "format" : "{}",
-        "interval" : 30,
-        "exec" : "~/.config/waybar/scripts/waybar-wttr.py",
-        "return-type" : "json"
-    },
-    "custom/calendar" : {
-        "tooltip" : true,
-        "format" : "{}",
-        "interval" : 60,
-        "exec" : "~/.config/waybar/scripts/waybar-hamster-calendar --calendar ~/hamster/Calendar.txt --waybar",
-        "return-type" : "json"
-    },
+	"network": {
+		"format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+		"format": "{icon}",
+		"format-wifi": "{icon}",
+		"format-ethernet": "󰀂",
+		"format-disconnected": "󰤮",
+		"tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+		"tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+		"tooltip-format-disconnected": "Disconnected",
+		"interval": 3,
+		"spacing": 1,
+		"on-click": "launch-wifi"
+	},
+	"group/tray-expander": {
+		"orientation": "inherit",
+		"drawer": {
+			"transition-duration": 600,
+			"children-class": "tray-group-item"
+		},
+		"modules": ["custom/expand-icon", "tray"]
+	},
+	"custom/expand-icon": {
+		"format": "",
+		"tooltip": false
+	},
     "tray": {
         "icon-size": 14,
         "spacing": 10
     },
+	 "cpu": {
+		"interval": 5,
+		"format": "󰍛",
+		"on-click": "xdg-terminal-exec btop"
+	},
     "clock": {
-        "format-alt": "{:%R}",
-        "format": "{:%I:%M %p}",
+        "format": "{:L%A %I:%M %p}",
+		"format-alt": "{:L%d %B W%V %Y}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
@@ -166,18 +143,31 @@
         "min-length": 6
     },
     "battery": {
-        "bat": "BAT0",
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 20
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
-    },
+		"format": "{capacity}% {icon}",
+		"format-discharging": "{icon}",
+		"format-charging": "{icon}",
+		"format-plugged": "",
+		"format-icons": {
+			"charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+			"default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+		},
+		"format-full": "󰂅",
+		"tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
+		"tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
+		"interval": 5,
+		//"on-click": "omarchy-menu power",
+		"states": {
+			"warning": 20,
+			"critical": 10
+		}
+	},
+	"bluetooth": {
+		"format": "",
+		"format-disabled": "󰂲",
+		"format-connected": "",
+		"tooltip-format": "Devices connected: {num_connections}",
+		"on-click": "blueberry"
+	},
     "pulseaudio": {
         "format": "{volume}% {icon}",
         "tooltip": false,
@@ -190,33 +180,4 @@
             "default": ["󰕿", "󰖀", "󰕾"]
         }
     },
-    "pulseaudio#microphone": {
-        "format": "{format_source}",
-        "format-source": "{volume}% 󰍬",
-        "format-source-muted": "Muted 󰍭",
-        "on-click": "pamixer --default-source -t",
-        "on-scroll-up": "pamixer --default-source -i 5",
-        "on-scroll-down": "pamixer --default-source -d 5",
-        "scroll-step": 5
-    },
-    "custom/notification": {
-    "tooltip": false,
-    "format": "{icon}",
-    "format-icons": {
-      "notification": "󰅸",
-      "none": "󰂜",
-      "dnd-notification": "󰅸",
-      "dnd-none": "󱏨",
-      "inhibited-notification": "󰅸",
-      "inhibited-none": "󰂜",
-      "dnd-inhibited-notification": "󰅸",
-      "dnd-inhibited-none": "󱏨"
-    },
-    "return-type": "json",
-    "exec-if": "which swaync-client",
-    "exec": "swaync-client -swb",
-    "on-click-right": "swaync-client -d -sw",
-    "on-click": "swaync-client -t -sw",
-    "escape": true
-  }
 }
