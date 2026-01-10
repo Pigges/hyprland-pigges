@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
-if ls ~/.config/hypr/disabled/SPLIT_MONITOR_WORKSPACES; then
+if ls ~/.config/hypr/disabled/SPLIT_MONITOR_WORKSPACES>/dev/null 2>&1; then
     exit 1
 fi
 
@@ -37,7 +37,7 @@ if hyprctl plugin list | grep -q 'split-monitor-workspaces'; then
     # hyprctl keyword unbind SUPERSHIFT, grave
     # hyprctl keywork bind SUPERSHIFT, grave, split-movetoworkspace, special
 
-    hyprctl notify -1 3000 "rgb(634B7E)" "Configured split-monitor-workspaces"
+    #hyprctl notify -1 3000 "rgb(634B7E)" "Configured split-monitor-workspaces"
 else
     hyprctl notify -1 10000 "rgb(ff0000)" "Failed to configure split-monitor-workspaces"
 fi

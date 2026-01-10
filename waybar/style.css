@@ -1,6 +1,7 @@
 @define-color foregound #0088FF;
-@define-color background #0C0C0C;
+@define-color background rgba(25, 25, 25, 0.4);
 @define-color accent #0487F9;
+@define-color border rgba(255, 255, 255, 0.2);
 
 * {
     background-color: transparent;
@@ -10,32 +11,53 @@
     font-family: system-ui, Nerd Font, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     /* font-weight: bold; */
      font-size: 14px;
+	text-shadow: 0 0 3px black;
+	font-weight: 600;
 }
 
 window#waybar {
-	color: @foreground;
-    background-color: transparent;
+    color: @foreground;
+    background-color: @background;
+    border-bottom: 1px solid @border;
+    border-radius: 4px;
+}
+
+window#waybar.solo {
+    /* background-color: rgba(0,0,0,0.1); */
+}
+
+window#waybar.empty {
+    /* background-color: transparent; */
 }
 
 .modules-left {
-  margin-left: 8px;
+    margin-left: 8px;
 }
 
 .modules-right {
-  margin-right: 8px;
-	padding: 4px;
+    margin-right: 8px;
+    padding: 4px;
+}
+
+#workspaces {
+    color: transparent;
+    margin-right: 1.5px;
+    margin-left: 1.5px;
+
 }
 
 #workspaces button {
     all: initial;
     min-width: 12px;
-    padding: 1.5px;
+    padding: 3px;
     margin: 0 6px;
-    border-radius: 12px;
+    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border-top: 1px solid transparent;
 }
 
 #workspaces button.visible {
 	color: @accent;
+	border-top: 1px solid white;
 }
 
 #workspaces button.empty {
@@ -45,7 +67,7 @@ window#waybar {
 #cpu,
 #battery,
 #pulseaudio,
-#custom-omarchy,
+#language,
 #custom-update {
 	min-width: 12px;
 	margin: 0 7.5px;
@@ -73,7 +95,7 @@ window#waybar {
 
 tooltip, #tray menu {
 	color: @foreground;
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: @background;
 	border-radius: 4px;
 	border: 2px solid @accent;
 }
@@ -82,6 +104,42 @@ tooltip, #tray menu {
 #user image {
     border-radius: 50%;  /* Makes it fully circular (adjust % for less rounding, e.g., 12px for fixed) */
     min-width: 32px;     /* Optional: Set a consistent size */
+
+}
+
+#audio {
+    background: alpha(darker(@active), 0.3);
+}
+
+#pulseaudio.mic {
+  border-radius: 4px;
+  color: white;
+  padding-left: 4px;
+}
+
+#backlight-slider slider,
+#pulseaudio-slider slider {
+  background-color: transparent;
+  background-image: none;
+
+}
+
+#backlight-slider trough,
+#pulseaudio-slider trough {
+  min-width: 50px;
+  min-height: 4px;
+  border-radius: 4px;
+  background-color: @background;
+}
+
+#backlight-slider highlight,
+#pulseaudio-slider highlight {
+  border-radius: 2px;
+  background-color: @accent;
+}
+
+#language {
+
 }
 
 #custom-update {

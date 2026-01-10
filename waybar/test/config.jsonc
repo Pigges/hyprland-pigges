@@ -1,0 +1,26 @@
+{
+    "layer": "top",
+    "position": "bottom", 
+    "height": 30,
+    "modules-left": ["custom/spacer"],
+    "modules-center": ["wlr/taskbar"],
+    "modules-right": ["custom/spacer"],
+
+
+	"wlr/taskbar": {
+		"format": "{icon}",
+		"icon-size": 14,
+		"icon-theme": "Numix-Circle",
+		"tooltip-format": "{title}",
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"rewrite": {
+			"Firefox Web Browser": "Firefox",
+			".*(steam_app_[0-9]+).*": "Game"
+
+		}
+	},
+    "custom/spacer": {
+        "format": " "
+    }
+}

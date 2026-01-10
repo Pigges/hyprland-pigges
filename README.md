@@ -1,7 +1,7 @@
 # Hyprland - Pigges
 
 My Hyprland Config
-![Screenshot](hyprland.png)
+![Screenshot](preview.png)
 
 ## Install
 
@@ -16,11 +16,13 @@ makepkg -si
 
 ### Packages
 ```bash
-paru -S hyprland polkit-gnome ffmpeg                    \
-rofi-lbonn-wayland-git pavucontrol nemo thunderbird starship wl-clipboard wf-recorder   \
-hyprpaper hyprlock grimblast-git ffmpegthumbnailer tumbler playerctl alacritty \
-waybar wlogout swaylock-effects sddm-git pamixer   \
-nwg-look-bin nordic-theme papirus-icon-theme dunst          \
+paru -S hyprland hyprpaper hyprpicker hypridle \
+hyprlock xdg-desktop-portal-hyprland hyprpolkitagent \
+ffmpeg \
+pavucontrol nemo wl-clipboard \
+playerctl alacritty uwsm \
+waybar wlogout pamixer   \
+mako vicinae \
 noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra nerd-fonts-git
 ```
 
